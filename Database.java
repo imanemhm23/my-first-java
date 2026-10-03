@@ -44,4 +44,14 @@ public class Database {
         }
         return list;
     }
+
+    static void deleteExpense(int id) {
+        try (Connection conn = DriverManager.getConnection(URL);
+             PreparedStatement ps = conn.prepareStatement("DELETE FROM expenses WHERE id = ?")) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Database error: " + e.getMessage());
+        }
+    }
 }

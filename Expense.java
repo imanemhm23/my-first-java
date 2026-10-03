@@ -1,5 +1,6 @@
 public class Expense {
     //fields : the data each expense hold s
+    int id;
     String name;
     double amount;
 
@@ -9,9 +10,18 @@ public class Expense {
         this.amount = amount;
     }
 
+    //used when we read an expense From the database (it has an id)
+    Expense(int id, String name, double amount){
+        this.id = id;
+        this.name = name;
+        this.amount = amount;
+    }
+
     //method : something an expense can do 
     void print() {
-        System.out.println(name + ": " + amount + " euros");
+        System.out.println(name + " : " + amount + " euros");
+        
+
     }
 
 }
