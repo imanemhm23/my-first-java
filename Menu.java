@@ -1,9 +1,47 @@
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.ArrayList;
 public class Menu {
+
+    static void saveToFile(ArrayList<Expense>list){
+        try{
+            PrintWriter writer = new PrintWriter(new File("expenses.txt"));
+            for(int i = 0; i < list.size(); i++){
+                writer.println(list.get(i).name + "," + list.get(i).amount);
+            }
+            writer.close();
+            System.out.println("Expenses saved to file.");
+        }catch(IOException e){
+            System.out.println("An error occurred while saving expenses to file.");
+        }
+    }
+
+    static void loadFromFile(ArrayList<Expense> list){
+        File file = new File("expenses.txt");
+        if(!file.exists()){
+            return;
+        }
+        try{
+            Scanner reader = new Scanner(file);
+            while(reader.hasNextLine()){
+                String line = reader.nextLine();
+                String[] parts = line.split(",");
+                list.add(new Expense(parts[0], Double.parseDouble(parts[1])));
+        
+            }
+            reader.close();
+        }catch(IOException e){
+            System.out.println("An error occurred while loading expenses from file.");
+        }
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Expense> list = new ArrayList<>();
+        loadFromFile(list);
+
         int choice = 0;
 
         do{
@@ -64,13 +102,14 @@ public class Menu {
         }
         
         }
-        else if(choice == 5){
+        else if(choice != 5){
             System.out.println("Exiting the program.");
         
         }
         
     }while(choice != 5);
 
+        saveToFile(list);
         System.out.println("Goodbye!");
         scanner.close();
 
