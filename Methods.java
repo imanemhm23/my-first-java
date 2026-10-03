@@ -50,3 +50,5 @@ public class Methods {
         System.out.println("Average expense: " + avg);
     }
 }
+
+//
