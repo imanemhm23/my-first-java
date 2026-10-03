@@ -11,7 +11,7 @@ I'm building it in stages, so I learn something new at each one.
 ## Roadmap
 
 - [x] Stage 0: Set up Java, VS Code, Git and GitHub
-- [x] Stage 1: Java basics (variables, if/else, loops, methods, classes)
+- [ ] Stage 1: Java basics (variables, if/else, loops, methods, classes)
 - [ ] Stage 2: Console expense tracker (add, list, delete, save to a file)
 - [ ] Stage 3: Add a database (SQL)
 - [ ] Stage 4: Turn it into a web app with Spring Boot and user login
