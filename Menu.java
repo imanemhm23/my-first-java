@@ -1,7 +1,9 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 public class Menu {
     public static void main(String[] args) {
-         Scanner1 scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Expense> list = new ArrayList<>();
         int choice = 0;
 
         do{
@@ -11,16 +13,32 @@ public class Menu {
         System.out.println("2. View expenses");
         System.out.println("3. Calculate total expenses");
         System.out.println("4. Exit");
+        System.out.print("your choice: ");
 
 
-         choice = scanner.nextInt();     //it will change later 
+
+
+         choice = scanner.nextInt();
+         scanner.nextLine(); // consume the newline character   
 
         if(choice == 1){
-            System.out.println("You chose to add an expense.");
+            System.out.print("Name: ");
+            String name = scanner.nextLine();
+            System.out.print("Amount: ");
+            double amount = scanner.nextDouble();
+
+            list.add(new Expense(name, amount));
+            System.out.println("Expense added successfully.");
         }else if(choice == 2){
-            System.out.println("You chose to view expenses.");
+            for(int i = 0; i < list.size(); i++){
+                list.get(i).print();
+            }
         }else if(choice == 3){
-            System.out.println("You chose to calculate total expenses.");
+            double total = 0;
+            for(int i = 0; i < list.size(); i++){
+                total = total + list.get(i).amount;
+            }
+            System.out.println("Total expenses: " + total);
         }
         
         }while(choice != 4);
