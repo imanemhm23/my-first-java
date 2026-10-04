@@ -37,7 +37,7 @@ public class Database {
              PreparedStatement ps = conn.prepareStatement("SELECT * FROM expenses");
              ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
-                list.add(new Expense(rs.getString("name"), rs.getDouble("amount")));
+                list.add(new Expense(rs.getInt("id"), rs.getString("name"), rs.getDouble("amount")));
             }
         } catch (SQLException e) {
             System.out.println("Database error: " + e.getMessage());
